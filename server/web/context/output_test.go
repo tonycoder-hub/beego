@@ -2,6 +2,7 @@ package context
 
 import (
 	"encoding/json"
+	"net/http"
 	"net/http/httptest"
 	"reflect"
 	"testing"
@@ -54,7 +55,7 @@ func TestStringsToJSON(t *testing.T) {
 }
 
 func TestOutput_JSON_Encoding_SupplementaryUnicode(t *testing.T) {
-	req := httptest.NewRequest("GET", "/", nil)
+	req := httptest.NewRequest("GET", "/", http.NoBody)
 	rec := httptest.NewRecorder()
 
 	ctx := NewContext()

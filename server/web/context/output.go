@@ -121,7 +121,7 @@ func (output *BeegoOutput) Cookie(name string, value string, others ...interface
 	// default "/"
 	tmpPath := "/"
 	if len(others) > 1 {
-		if v, ok := others[1].(string); ok && len(v) > 0 {
+		if v, ok := others[1].(string); ok && v != "" {
 			tmpPath = sanitizeValue(v)
 		}
 	}
@@ -129,7 +129,7 @@ func (output *BeegoOutput) Cookie(name string, value string, others ...interface
 
 	// default empty
 	if len(others) > 2 {
-		if v, ok := others[2].(string); ok && len(v) > 0 {
+		if v, ok := others[2].(string); ok && v != "" {
 			fmt.Fprintf(&b, "; Domain=%s", sanitizeValue(v))
 		}
 	}
@@ -159,7 +159,7 @@ func (output *BeegoOutput) Cookie(name string, value string, others ...interface
 
 	// default empty
 	if len(others) > 5 {
-		if v, ok := others[5].(string); ok && len(v) > 0 {
+		if v, ok := others[5].(string); ok && v != "" {
 			fmt.Fprintf(&b, "; SameSite=%s", sanitizeValue(v))
 		}
 	}
